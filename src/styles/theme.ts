@@ -4,6 +4,7 @@ export default {
     primary: '#FFFFFF',
     secondary: '#A839FF',
 
-    text: '#333',
+    darkText: '#333',
+    lightText: '#EFEBFA',
   }
 }

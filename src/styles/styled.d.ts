@@ -6,8 +6,9 @@ declare module 'styled-components' {
       background: string,
       primary: string,
       secondary: string,
-  
-      text: string,
+
+      darkText: string,
+      lightText: string,
     }
   }
 }

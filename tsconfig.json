@@ -22,7 +22,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".tsconfig"
+    ".tsconfig",
+    "next.config.js"
   ],
   "files": [
     "src/styles/styled.d.ts"
