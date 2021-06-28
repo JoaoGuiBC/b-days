@@ -8,8 +8,10 @@ export const Container = styled.div<CardProps>`
   display: flex;
   flex-direction: column;
   
-  width: 9rem;
-  height: 11rem;
+  width: ${({ isIcon }) => isIcon ? '9rem' : '8rem'};
+  height: ${({ isIcon }) => isIcon ? '11rem' : '10rem'};
+
+  ${({ isIcon }) => !isIcon ? 'cursor: pointer' : ''};
 
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.primary};
