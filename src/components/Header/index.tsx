@@ -36,8 +36,6 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
       <ButtonsContainer>
 
         {images.map(image => {
-          console.log('cu')
-
           if (image.name !== title)
             return (
               <Link href={image.name} key={image.name}>

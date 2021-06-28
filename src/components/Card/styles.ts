@@ -16,7 +16,6 @@ export const Container = styled(motion.div) <CardProps>`
 
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.primary};
-  /* box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4); */
 
   p {
     text-align: center;

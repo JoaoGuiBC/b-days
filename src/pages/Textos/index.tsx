@@ -1,13 +1,33 @@
+import { useCallback, useState } from "react";
+
 import { Card } from "../../components/Card";
 import { Header } from "../../components/Header";
+import { Modal } from "../../components/Modal";
 
 import { Container, Text, CardsContainer } from './styles';
 
 const persons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 
+export interface SelectedPersonProps {
+  name: string;
+}
+
 const Textos: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState<SelectedPersonProps>({} as SelectedPersonProps);
+
+  const handleToggleModal = useCallback((personName: string) => {
+    setSelectedPerson({ name: personName });
+    setIsVisible(true);
+  }, []);
+
   return (
     <>
+      <Modal
+        isVisible={isVisible}
+        setIsVisible={() => setIsVisible(false)}
+        person={selectedPerson}
+      />
       <Header title="Textos" />
       <Container>
         <Text>
@@ -24,6 +44,7 @@ const Textos: React.FC = () => {
               image="/userPhotoPlaceholder.png"
               isIcon={false}
               initialDelay={((person - 1) / 10)}
+              toggleModal={handleToggleModal}
             />
           ))}
 

@@ -1,8 +1,8 @@
+import { useCallback, useState } from "react";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 
 import { Container } from './styles';
-import { useCallback, useState } from "react";
 
 interface CardProps {
   title: string;
@@ -10,6 +10,7 @@ interface CardProps {
   altText: string;
   isIcon: boolean;
   initialDelay: number;
+  toggleModal?: (personName: string) => void;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -18,6 +19,7 @@ export const Card: React.FC<CardProps> = ({
   altText,
   isIcon,
   initialDelay,
+  toggleModal,
 }) => {
   const [animationDelay, setAnimationDelay] = useState(initialDelay);
   const [animationDuration, setAnimationDuration] = useState(0.75);
@@ -46,7 +48,7 @@ export const Card: React.FC<CardProps> = ({
           </a>
         </Link>
       ) : (
-        <img src={image} alt={altText} />
+        <img src={image} alt={altText} onClick={() => toggleModal(title)} />
       )}
     </Container>
   );
