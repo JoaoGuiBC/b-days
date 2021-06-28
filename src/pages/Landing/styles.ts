@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import img from '../../../public/personPhoto.png';
@@ -95,7 +96,7 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const MusicButton = styled.div`
+export const MusicButton = styled(motion.div)`
   display: flex;
 
   width: 20rem;

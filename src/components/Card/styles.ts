@@ -1,10 +1,11 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 interface CardProps {
   isIcon: boolean
 }
 
-export const Container = styled.div<CardProps>`
+export const Container = styled(motion.div) <CardProps>`
   display: flex;
   flex-direction: column;
   
@@ -15,7 +16,7 @@ export const Container = styled.div<CardProps>`
 
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.primary};
-  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4); */
 
   p {
     text-align: center;

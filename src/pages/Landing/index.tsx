@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -14,6 +15,8 @@ import {
 } from './styles';
 
 export const Landing: React.FC = () => {
+  const [animationDelay, setAnimationDelay] = useState(0.2);
+
   return (
     <Container>
       <WelcomeContainer>
@@ -47,7 +50,13 @@ export const Landing: React.FC = () => {
 
         <Link href="/Musicas">
           <a>
-            <MusicButton>
+            <MusicButton
+              initial={{ opacity: 0, y: -15, boxShadow: "1px 20px 4px rgba(0, 0, 0, 0.1)" }}
+              animate={{ opacity: 1, y: 0, boxShadow: '1px 4px 4px rgba(0, 0, 0, 0.4)', }}
+              onAnimationComplete={() => setAnimationDelay(0)}
+              whileHover={{ scale: 1.05, y: -9, boxShadow: "1px 14px 4px rgba(0, 0, 0, 0.2)" }}
+              transition={{ duration: 0.5, bounce: 1, delay: animationDelay }}
+            >
               <motion.img
                 src="/spotifyLogoIcon.png"
                 alt="Botão para ir para a página de músicas"
