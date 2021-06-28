@@ -48,7 +48,7 @@ export const Landing: React.FC = () => {
           </Card>
         </ButtonsContainer>
 
-        <Link href="Musicas">
+        <Link href="/Musicas">
           <a>
             <MusicButton>
               <img
