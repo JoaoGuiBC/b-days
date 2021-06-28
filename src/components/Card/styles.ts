@@ -12,8 +12,6 @@ export const Container = styled(motion.div) <CardProps>`
   width: ${({ isIcon }) => isIcon ? '9rem' : '8rem'};
   height: ${({ isIcon }) => isIcon ? '11rem' : '10rem'};
 
-  ${({ isIcon }) => !isIcon ? 'cursor: pointer' : ''};
-
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.primary};
 
@@ -37,7 +35,8 @@ export const Container = styled(motion.div) <CardProps>`
     width: 100%;
     display:block;
     border-radius: 0 0 10px 10px;
-
+    
     ${({ isIcon }) => isIcon ? 'padding: 16px' : ''}
+    ${({ isIcon }) => !isIcon ? 'cursor: pointer' : ''};
   }
 `
