@@ -1,12 +1,10 @@
-import React from 'react';
-
 // import { Container } from './styles';
+
+import { Header } from "../../components/Header";
 
 const Musicas: React.FC = () => {
   return (
-    <div>
-      <h1>Página de musicas</h1>
-    </div>
+    <Header title="Musicas" />
   );
 }
 

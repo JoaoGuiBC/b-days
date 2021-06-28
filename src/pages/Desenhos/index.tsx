@@ -1,12 +1,10 @@
-import React from 'react';
-
 // import { Container } from './styles';
+
+import { Header } from "../../components/Header";
 
 const Desenhos: React.FC = () => {
   return (
-    <div>
-      <h1>Página de desenhos</h1>
-    </div>
+    <Header title="Desenhos" />
   );
 }
 
