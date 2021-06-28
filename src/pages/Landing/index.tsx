@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 import { Card } from '../../components/Card';
@@ -47,9 +48,10 @@ export const Landing: React.FC = () => {
         <Link href="/Musicas">
           <a>
             <MusicButton>
-              <img
+              <motion.img
                 src="/spotifyLogoIcon.png"
                 alt="Botão para ir para a página de músicas"
+                layoutId="Musicas"
               />
               <p>Musiquinhas</p>
             </MusicButton>

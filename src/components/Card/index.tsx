@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { motion } from 'framer-motion';
 
 import { Container } from './styles';
 
@@ -17,7 +18,7 @@ export const Card: React.FC<CardProps> = ({ title, image, altText, isIcon }) => 
       {isIcon ? (
         <Link href={`/${title}`}>
           <a>
-            <img src={image} alt={altText} />
+            <motion.img src={image} alt={altText} layoutId={title} />
           </a>
         </Link>
       ) : (

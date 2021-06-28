@@ -114,26 +114,11 @@ export const MusicButton = styled.div`
 
     text-decoration: none;
     letter-spacing: 0.1rem;
-    color: ${({ theme }) => theme.colors.darkText}
+    color: ${({ theme }) => theme.colors.darkText};
+    border-left: 1px solid ${({ theme }) => theme.colors.secondary};
   }
 
   img {
     padding: 0.5rem .75rem;
-    border-right: 1px solid ${({ theme }) => theme.colors.secondary}
   }
 `;
-
-// export const ImageContainer = styled.button`
-//   flex: 1;
-
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   height: 8rem;
-
-//   background: transparent;
-//   border: none;
-
-//   cursor: pointer;
-// `;

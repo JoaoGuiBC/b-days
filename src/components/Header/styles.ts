@@ -24,6 +24,7 @@ export const Title = styled.div`
 
   width: 210px;
   justify-content: center;
+  align-items: center;
   gap: 8px;
 
   margin: 0 auto;
@@ -34,10 +35,6 @@ export const Title = styled.div`
     font-size: 24px;
     font-weight: 500;
     letter-spacing: 0.1em;
-  }
-
-  div {
-    align-self: center;
   }
 `;
 
