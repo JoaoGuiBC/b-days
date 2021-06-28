@@ -2,26 +2,40 @@ import Link from "next/link";
 import { motion } from 'framer-motion';
 
 import { Container } from './styles';
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 interface CardProps {
   title: string;
   image: string;
   altText: string;
   isIcon: boolean;
+  initialDelay: number;
 }
 
-export const Card: React.FC<CardProps> = ({ title, image, altText, isIcon }) => {
-  const [animationDelay, setAnimationDelay] = useState(0.2);
+export const Card: React.FC<CardProps> = ({
+  title,
+  image,
+  altText,
+  isIcon,
+  initialDelay,
+}) => {
+  const [animationDelay, setAnimationDelay] = useState(initialDelay);
+  const [animationDuration, setAnimationDuration] = useState(0.75);
+
+  const changeAnimationValues = useCallback(() => {
+    setAnimationDelay(0);
+    setAnimationDuration(0.2);
+  }, [setAnimationDelay, setAnimationDuration]);
 
   return (
     <Container
       isIcon={isIcon}
       initial={{ opacity: 0, y: -15, boxShadow: "1px 20px 4px rgba(0, 0, 0, 0.1)" }}
       animate={{ opacity: 1, y: 0, boxShadow: '1px 4px 4px rgba(0, 0, 0, 0.4)', }}
-      onAnimationComplete={() => setAnimationDelay(0)}
+      onAnimationComplete={changeAnimationValues}
       whileHover={{ scale: 1.05, y: -9, boxShadow: "1px 14px 4px rgba(0, 0, 0, 0.2)" }}
-      transition={{ duration: 0.5, bounce: 1, delay: animationDelay }}
+      whileTap={{ scale: 0.75, y: 0, boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.4)" }}
+      transition={{ duration: animationDuration, bounce: 1, delay: animationDelay }}
     >
       <p>{title}</p>
 

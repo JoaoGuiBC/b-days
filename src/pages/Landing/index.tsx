@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -16,6 +16,12 @@ import {
 
 export const Landing: React.FC = () => {
   const [animationDelay, setAnimationDelay] = useState(0.2);
+  const [animationDuration, setAnimationDuration] = useState(0.75);
+
+  const changeAnimationValues = useCallback(() => {
+    setAnimationDelay(0);
+    setAnimationDuration(0.2);
+  }, [setAnimationDelay, setAnimationDuration]);
 
   return (
     <Container>
@@ -38,12 +44,14 @@ export const Landing: React.FC = () => {
             altText="Botão para ir para a página de textos"
             image="/pencilIcon.png"
             isIcon
+            initialDelay={0.2}
           />
           <Card
             title="Desenhos"
             altText="Botão para ir para a página de desenhos"
             image="/paintIcon.png"
             isIcon
+            initialDelay={0.2}
           />
 
         </ButtonsContainer>
@@ -53,9 +61,10 @@ export const Landing: React.FC = () => {
             <MusicButton
               initial={{ opacity: 0, y: -15, boxShadow: "1px 20px 4px rgba(0, 0, 0, 0.1)" }}
               animate={{ opacity: 1, y: 0, boxShadow: '1px 4px 4px rgba(0, 0, 0, 0.4)', }}
-              onAnimationComplete={() => setAnimationDelay(0)}
+              onAnimationComplete={changeAnimationValues}
               whileHover={{ scale: 1.05, y: -9, boxShadow: "1px 14px 4px rgba(0, 0, 0, 0.2)" }}
-              transition={{ duration: 0.5, bounce: 1, delay: animationDelay }}
+              whileTap={{ scale: 0.75, y: 0, boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.4)" }}
+              transition={{ duration: animationDuration, bounce: 1, delay: animationDelay }}
             >
               <motion.img
                 src="/spotifyLogoIcon.png"

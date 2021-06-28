@@ -3,6 +3,8 @@ import { Header } from "../../components/Header";
 
 import { Container, Text, CardsContainer } from './styles';
 
+const persons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+
 const Textos: React.FC = () => {
   return (
     <>
@@ -13,108 +15,18 @@ const Textos: React.FC = () => {
           especial para todos nós :&#41;
         </Text>
         <CardsContainer>
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
-          <Card
-            title="Pessoa 1"
-            altText="Pessoa 1"
-            image="/userPhotoPlaceholder.png"
-            isIcon={false}
-          />
+
+          {persons.map(person => (
+            <Card
+              key={person}
+              title={`Pessoa ${person}`}
+              altText={`Pessoa ${person}`}
+              image="/userPhotoPlaceholder.png"
+              isIcon={false}
+              initialDelay={((person - 1) / 10)}
+            />
+          ))}
+
         </CardsContainer>
       </Container>
     </>
