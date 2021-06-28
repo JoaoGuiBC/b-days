@@ -67,10 +67,103 @@ export const Texts = styled.div`
     font-size: 1.25rem;
     text-align: center;
     letter-spacing: 0.25rem;
+    color: ${({ theme }) => theme.colors.lightText};
+  }
+`;
+
+export const MenuContainer = styled.div`
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 7rem 0;
+
+  background: ${({ theme }) => theme.colors.background};
+
+  span {
+    font-size: 1.25rem;
   }
 `;
 
 export const ButtonsContainer = styled.div`
-  background: ${({ theme }) => theme.colors.background};
-  flex: 1;
+  display: flex;
+  
+  width: 20rem;
+  justify-content: space-between;
 `;
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  width: 9rem;
+  height: 11rem;
+
+  border-radius: 10px;
+  background: ${({ theme }) => theme.colors.primary};
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4);
+
+  p {
+    text-align: center;
+    letter-spacing: 0.1rem;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
+  }
+
+  a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    max-height: 8rem;
+  }
+`
+
+export const MusicButton = styled.div`
+  display: flex;
+
+  width: 20rem;
+  height: 4rem;
+
+  border-radius: 10px;
+  background: ${({ theme }) => theme.colors.primary};
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4);
+
+  p {
+    flex: 1;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    letter-spacing: 0.1rem;
+    color: ${({ theme }) => theme.colors.darkText}
+  }
+
+  img {
+    padding: 0.5rem .75rem;
+    border-right: 1px solid ${({ theme }) => theme.colors.secondary}
+  }
+`;
+
+// export const ImageContainer = styled.button`
+//   flex: 1;
+
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   height: 8rem;
+
+//   background: transparent;
+//   border: none;
+
+//   cursor: pointer;
+// `;

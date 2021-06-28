@@ -27,8 +27,12 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.text};
+  }
+
+  body, p, a {
     font-family: 'Poppins';
     font-size: 1rem;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.darkText};
   }
 `;

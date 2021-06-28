@@ -1,9 +1,14 @@
+import Link from 'next/link';
+
 import {
   Container,
   WelcomeContainer,
   BackgroundImg,
   Texts,
-  ButtonsContainer
+  MenuContainer,
+  ButtonsContainer,
+  Card,
+  MusicButton,
 } from './styles';
 
 export const Landing: React.FC = () => {
@@ -18,7 +23,43 @@ export const Landing: React.FC = () => {
         </Texts>
       </WelcomeContainer>
 
-      <ButtonsContainer></ButtonsContainer>
+      <MenuContainer>
+        <span>Comece escolhendo uma categoria</span>
+
+        <ButtonsContainer>
+          <Card>
+            <p>Textos</p>
+
+            <Link href="/Textos">
+              <a>
+                <img src="/pencilIcon.png" alt="Botão para ir para a página de textos" />
+              </a>
+            </Link>
+          </Card>
+
+          <Card>
+            <p>Desenhos</p>
+
+            <Link href="/Desenhos">
+              <a>
+                <img src="/paintIcon.png" alt="Botão para ir para a página de desenhos" />
+              </a>
+            </Link>
+          </Card>
+        </ButtonsContainer>
+
+        <Link href="Musicas">
+          <a>
+            <MusicButton>
+              <img
+                src="/spotifyLogoIcon.png"
+                alt="Botão para ir para a página de músicas"
+              />
+              <p>Musiquinhas</p>
+            </MusicButton>
+          </a>
+        </Link>
+      </MenuContainer>
     </Container>
   );
 }
