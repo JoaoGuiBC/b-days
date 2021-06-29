@@ -27,6 +27,9 @@ const Desenhos: React.FC = () => {
         <Images>
           <ArtistName>
             <strong>Fulano</strong>
+            <a href="/placeholderImage.png" download="draw.png">
+              <Image src="/svg/download.svg" height={32} width={32} />
+            </a>
           </ArtistName>
           <Background Image="/placeholderImage.png" />
         </Images>
@@ -34,6 +37,9 @@ const Desenhos: React.FC = () => {
         <Images>
           <ArtistName>
             <strong>Fulano</strong>
+            <a href="/placeholderImage2.png" download="draw.png">
+              <Image src="/svg/download.svg" height={32} width={32} />
+            </a>
           </ArtistName>
           <Background Image="/placeholderImage2.png" />
         </Images>
@@ -41,6 +47,9 @@ const Desenhos: React.FC = () => {
         <Images>
           <ArtistName className="artistName">
             <strong>Fulano</strong>
+            <a href="/placeholderImage.png" download="draw.png">
+              <Image src="/svg/download.svg" height={32} width={32} />
+            </a>
           </ArtistName>
           <Background Image="/placeholderImage.png" />
         </Images>
@@ -48,6 +57,9 @@ const Desenhos: React.FC = () => {
         <Images>
           <ArtistName>
             <strong>Fulano</strong>
+            <a href="/placeholderImage2.png" download="draw.png">
+              <Image src="/svg/download.svg" height={32} width={32} />
+            </a>
           </ArtistName>
           <Background Image="/placeholderImage2.png" />
         </Images>

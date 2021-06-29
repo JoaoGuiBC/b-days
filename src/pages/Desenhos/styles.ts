@@ -49,6 +49,13 @@ export const ArtistName = styled.div`
   border-radius: 0px 0px 10px 10px;
 
   z-index: 3;
+
+  a {
+    position: absolute;
+    display: flex;
+
+    right: 32px;
+  }
 `;
 
 export const Background = styled.div<BackgroundProps>`
@@ -58,8 +65,6 @@ export const Background = styled.div<BackgroundProps>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-
-  border-radius: 10px;
 
   width: 100%;
   height: 100vh;
