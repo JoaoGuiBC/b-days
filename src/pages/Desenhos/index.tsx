@@ -11,6 +11,10 @@ import {
 } from './styles';
 
 const Desenhos: React.FC = () => {
+  function handleScrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
     <>
       <Header title="Desenhos" />
@@ -49,7 +53,7 @@ const Desenhos: React.FC = () => {
         </Images>
 
         <Footer>
-          <span>Voltar ao início</span>
+          <span onClick={handleScrollToTop}>Voltar ao início</span>
           <Image src="/svg/chevronUp.svg" height={16} width={16} />
         </Footer>
       </Container>
