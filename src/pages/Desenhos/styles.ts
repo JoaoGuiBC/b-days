@@ -54,6 +54,7 @@ export const ArtistName = styled.div`
 export const Background = styled.div<BackgroundProps>`
   background-image: url(${({ Image }) => Image});
 
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
