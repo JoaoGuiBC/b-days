@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 interface BackgroundProps {
@@ -25,40 +26,22 @@ export const Images = styled.div`
   width: 100%;
 
   & + & > div:first-child {
-    border-radius: 10px;
     filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7));
   }
 `;
 
-export const ArtistName = styled.div`
-  display: flex;
-
+export const Separator = styled.div`
   width: 100%;
-  height: 7rem;
-
-  align-items: center;
-  justify-content: center;
-
-  color: ${({ theme }) => theme.colors.lightText};
-  font-size: 4.5rem;
-  letter-spacing: 0.1em;
+  height: 0.5rem;
 
   background: ${({ theme }) => theme.colors.secondary};
   filter: drop-shadow(0px 8px 4px rgba(0, 0, 0, 0.4));
-
-  border-radius: 0px 0px 10px 10px;
-
-  z-index: 3;
-
-  a {
-    position: absolute;
-    display: flex;
-
-    right: 32px;
-  }
 `;
 
 export const Background = styled.div<BackgroundProps>`
+  display: flex;
+  align-items: center;
+
   background-image: url(${({ Image }) => Image});
 
   background-attachment: fixed;
@@ -68,6 +51,49 @@ export const Background = styled.div<BackgroundProps>`
 
   width: 100%;
   height: 100vh;
+`;
+
+export const ArtistInfo = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+
+  width: 15rem;
+
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 5px 5px 0;
+
+  color: ${({ theme }) => theme.colors.lightText};
+  background: ${({ theme }) => theme.colors.secondary};
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.8));
+
+  span {
+    font-size: 0.75rem;
+  }
+
+  strong {
+    font-size: 1.5rem;
+  }
+
+  a {
+    display: flex;
+
+    margin-top: 1.25rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    width: min-content;
+    color: ${({ theme }) => theme.colors.lightText};
+
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  a img {
+    height: 1rem;
+    margin-left: 4px;
+  }
 `;
 
 export const Footer = styled.div`

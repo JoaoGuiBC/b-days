@@ -5,12 +5,14 @@ import {
   Container,
   Text,
   Images,
-  ArtistName,
+  Separator,
   Background,
+  ArtistInfo,
   Footer,
 } from './styles';
 
 const Desenhos: React.FC = () => {
+
   function handleScrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -25,43 +27,59 @@ const Desenhos: React.FC = () => {
         </Text>
 
         <Images>
-          <ArtistName>
-            <strong>Fulano</strong>
-            <a href="/placeholderImage.png" download="draw.png">
-              <Image src="/svg/download.svg" height={32} width={32} />
-            </a>
-          </ArtistName>
-          <Background Image="/placeholderImage.png" />
+          <Separator />
+          <Background Image="/placeholderImage.png">
+            <ArtistInfo>
+              <span>Feito por:</span>
+              <strong>Fulano</strong>
+              <a href="/placeholderImage.png" download="draw.png">
+                Download
+                <img src="/svg/download.svg" alt="Download" />
+              </a>
+            </ArtistInfo>
+          </Background>
         </Images>
 
         <Images>
-          <ArtistName>
-            <strong>Fulano</strong>
-            <a href="/placeholderImage2.png" download="draw.png">
-              <Image src="/svg/download.svg" height={32} width={32} />
-            </a>
-          </ArtistName>
-          <Background Image="/placeholderImage2.png" />
+          <Separator />
+          <Background Image="/placeholderImage2.png">
+            <ArtistInfo>
+              <span>Feito por:</span>
+              <strong>Fulano</strong>
+              <a href="/placeholderImage2.png" download="draw.png">
+                Download
+                <img src="/svg/download.svg" alt="Download" />
+              </a>
+            </ArtistInfo>
+          </Background>
         </Images>
 
         <Images>
-          <ArtistName className="artistName">
-            <strong>Fulano</strong>
-            <a href="/placeholderImage.png" download="draw.png">
-              <Image src="/svg/download.svg" height={32} width={32} />
-            </a>
-          </ArtistName>
-          <Background Image="/placeholderImage.png" />
+          <Separator />
+          <Background Image="/placeholderImage.png">
+            <ArtistInfo>
+              <span>Feito por:</span>
+              <strong>Fulano</strong>
+              <a href="/placeholderImage.png" download="draw.png">
+                Download
+                <img src="/svg/download.svg" alt="Download" />
+              </a>
+            </ArtistInfo>
+          </Background>
         </Images>
 
         <Images>
-          <ArtistName>
-            <strong>Fulano</strong>
-            <a href="/placeholderImage2.png" download="draw.png">
-              <Image src="/svg/download.svg" height={32} width={32} />
-            </a>
-          </ArtistName>
-          <Background Image="/placeholderImage2.png" />
+          <Separator />
+          <Background Image="/placeholderImage2.png">
+            <ArtistInfo>
+              <span>Feito por:</span>
+              <strong>Fulano</strong>
+              <a href="/placeholderImage2.png" download="draw.png">
+                Download
+                <img src="/svg/download.svg" alt="Download" />
+              </a>
+            </ArtistInfo>
+          </Background>
         </Images>
 
         <Footer>
