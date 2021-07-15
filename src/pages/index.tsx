@@ -1,6 +1,10 @@
 import { Container, Title, Content, NewPageButton, Separator, Button } from "./styles";
 
+import { useAuth } from "../hooks/useAuth";
+
 export default function Home() {
+  const { signInWithGoogle } = useAuth();
+
   return (
     <Container>
       <Title>
@@ -9,11 +13,10 @@ export default function Home() {
       </Title>
 
       <Content>
-        <NewPageButton>
+        <NewPageButton onClick={signInWithGoogle}>
           <img src="/svg/googleIcon.svg" alt="Google logo" />
           Faça login para criar uma página
         </NewPageButton>
-
         <Separator>OU</Separator>
 
         <Button
