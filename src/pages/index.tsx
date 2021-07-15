@@ -5,6 +5,14 @@ import { useAuth } from "../hooks/useAuth";
 export default function Home() {
   const { user, signInWithGoogle } = useAuth();
 
+  function handleCreateNewPage() {
+    if (!user) {
+      return signInWithGoogle();
+    }
+
+    alert('Você já está logado');
+  }
+
   return (
     <Container>
       <Title>
@@ -13,7 +21,7 @@ export default function Home() {
       </Title>
 
       <Content>
-        <NewPageButton onClick={signInWithGoogle} isLoggedIn={user ? true : false}>
+        <NewPageButton onClick={handleCreateNewPage} isLoggedIn={user ? true : false}>
           {user ? (
             <>
               <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
