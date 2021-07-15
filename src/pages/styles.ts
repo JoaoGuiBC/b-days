@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+interface NewPageButtonProps {
+  isLoggedIn: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +35,7 @@ export const Content = styled.div`
   align-items: center;
 `;
 
-export const NewPageButton = styled.button`
+export const NewPageButton = styled.button<NewPageButtonProps>`
   display: flex;
 
   width: 25rem;
@@ -42,7 +46,10 @@ export const NewPageButton = styled.button`
   font-size: 1.125rem;
 
   border-radius: 8px;
-  border: solid 2px #A8A8B3;
+  border: solid 2px ${({ isLoggedIn, theme }) => isLoggedIn
+    ? theme.colors.secondary
+    : '#A8A8B3'
+  };
 
   background: transparent;
   cursor: pointer;
@@ -54,9 +61,21 @@ export const NewPageButton = styled.button`
     height: 1.25rem;
   }
 
+  svg {
+    height: 1.25rem;
+    stroke: ${({ theme }) => theme.colors.secondary};
+  }
+
   &:hover {
-    background: #A8A8B3;
-    color: ${({ theme }) => theme.colors.primary}
+    background: ${({ isLoggedIn, theme }) => isLoggedIn
+    ? theme.colors.secondary
+    : '#A8A8B3'
+  };
+    color: ${({ theme }) => theme.colors.primary};
+
+    svg {
+      stroke: ${({ theme }) => theme.colors.primary};
+    }
   }
 `;
 
