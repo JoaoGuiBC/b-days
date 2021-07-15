@@ -48,7 +48,7 @@ export const NewPageButton = styled.button<NewPageButtonProps>`
   border-radius: 8px;
   border: solid 2px ${({ isLoggedIn, theme }) => isLoggedIn
     ? theme.colors.secondary
-    : '#A8A8B3'
+    : theme.colors.util
   };
 
   background: transparent;
@@ -69,7 +69,7 @@ export const NewPageButton = styled.button<NewPageButtonProps>`
   &:hover {
     background: ${({ isLoggedIn, theme }) => isLoggedIn
     ? theme.colors.secondary
-    : '#A8A8B3'
+    : theme.colors.util
   };
     color: ${({ theme }) => theme.colors.primary};
 
@@ -81,7 +81,7 @@ export const NewPageButton = styled.button<NewPageButtonProps>`
 
 export const Separator = styled.div`
   font-size: 400;
-  color: #A8A8B3;
+  color: ${({ theme }) => theme.colors.util};
 
   text-align: center;
   position: relative;
@@ -91,7 +91,7 @@ export const Separator = styled.div`
   &::before {
     content: '';
     width: 11.2rem;
-    background: #A8A8B3;
+    background: ${({ theme }) => theme.colors.util};
     height: 2px;
     position: absolute;
     right: 2rem;
@@ -100,7 +100,7 @@ export const Separator = styled.div`
   &::after {
     content: '';
     width: 11.2rem;
-    background: #A8A8B3;
+    background: ${({ theme }) => theme.colors.util};
     height: 2px;
     position: absolute;
     left: 2rem;
