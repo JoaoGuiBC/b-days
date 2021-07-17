@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 
 import { Card } from "../../components/Card";
 import { Header } from "../../components/Header";
-import { Modal } from "../../components/Modal";
+import { Modal } from "../../components/TextsModal";
 
 import { Container, Text, CardsContainer } from './styles';
 
