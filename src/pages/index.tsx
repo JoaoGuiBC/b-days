@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Title, Content, NewPageButton, Separator, Button } from "./styles";
+import { Container, Title, Content, NewPageButton, Separator, Button } from "../styles/pages/index";
 
 import { useAuth } from "../hooks/useAuth";
 import { database } from '../services/firebase';

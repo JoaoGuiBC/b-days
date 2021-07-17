@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-import { Card } from '../../components/Card';
+import { Card } from '../components/Card';
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
   MenuContainer,
   ButtonsContainer,
   MusicButton,
-} from './styles';
+} from '../styles/pages/landing';
 
 const Landing: React.FC = () => {
   const [animationDelay, setAnimationDelay] = useState(0.2);

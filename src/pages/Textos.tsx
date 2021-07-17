@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
 
-import { Card } from "../../components/Card";
-import { Header } from "../../components/Header";
-import { Modal } from "../../components/TextsModal";
+import { Card } from "../components/Card";
+import { Header } from "../components/Header";
+import { Modal } from "../components/TextsModal";
 
-import { Container, Text, CardsContainer } from './styles';
+import { Container, Text, CardsContainer } from '../styles/pages/textos';
 
 const persons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 
