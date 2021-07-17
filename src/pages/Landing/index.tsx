@@ -14,7 +14,7 @@ import {
   MusicButton,
 } from './styles';
 
-export const Landing: React.FC = () => {
+const Landing: React.FC = () => {
   const [animationDelay, setAnimationDelay] = useState(0.2);
   const [animationDuration, setAnimationDuration] = useState(0.75);
 
@@ -79,3 +79,5 @@ export const Landing: React.FC = () => {
     </Container>
   );
 }
+
+export default Landing;

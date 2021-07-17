@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
 
   return (
     <Container>
-      <Link href="/">
+      <Link href="/Landing">
         <a>
           <Image src="/svg/arrow.svg" height={32} width={32} />
         </a>

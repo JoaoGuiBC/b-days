@@ -12,7 +12,11 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app();
+}
 
 const auth = firebase.auth();
 

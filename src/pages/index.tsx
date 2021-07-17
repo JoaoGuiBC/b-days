@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Container, Title, Content, NewPageButton, Separator, Button } from "./styles";
 
 import { useAuth } from "../hooks/useAuth";
@@ -5,12 +6,14 @@ import { useAuth } from "../hooks/useAuth";
 export default function Home() {
   const { user, signInWithGoogle } = useAuth();
 
+  const router = useRouter();
+
   function handleCreateNewPage() {
     if (!user) {
       return signInWithGoogle();
     }
 
-    alert('Você já está logado');
+    router.push('/Landing');
   }
 
   return (
@@ -56,5 +59,6 @@ export default function Home() {
         )}
       </Content>
     </Container>
+    // <Landing />
   )
 }

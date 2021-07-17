@@ -42,8 +42,7 @@ const Desenhos: React.FC = () => {
       <Header title="Desenhos" />
       <Container>
         <Text>
-          Este espaço foi criado para demonstrar o quanto você é querida e
-          especial para todos nós :&#41;
+          Parva details de perfectum est fecit
         </Text>
 
         {drawings.map(draw => (
