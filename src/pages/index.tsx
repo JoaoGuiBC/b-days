@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Container, Title, Content, NewPageButton, Separator, Button } from "../styles/pages/index";
 
 import { useAuth } from "../hooks/useAuth";
-import { database } from '../services/firebase';
 import { NewPageModal } from "../components/NewPageModal";
 
 export default function Home() {

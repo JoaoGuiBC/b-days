@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.colors.background};
   }
 
-  button, body, p, a {
+  button, body, p, a, input {
     font-family: 'Poppins';
     font-size: 1rem;
     text-decoration: none;
