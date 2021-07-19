@@ -1,5 +1,6 @@
-import { AnimatePresence } from 'framer-motion';
 import { FormEvent, useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
+import { AnimatePresence } from 'framer-motion';
 
 
 import { useAuth } from '../../hooks/useAuth';
@@ -28,6 +29,7 @@ export const NewPageModal: React.FC<NewPageModal> = ({ isVisible, setIsVisible }
   const [isMusicSelected, setIsMusicSelected] = useState(false);
 
   const { user } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const close = (e) => {
@@ -50,15 +52,19 @@ export const NewPageModal: React.FC<NewPageModal> = ({ isVisible, setIsVisible }
       return;
     }
 
-    const pageRef = database.ref('pages');
+    const pageRef = database.ref(`${user.id}/pages/${personName}`);
 
-    const firebasePage = await pageRef.push({
+    await pageRef.set({
       personName,
       textsPage: isTextSelected,
       drawsPage: isDrawSelected,
       musicsPage: isMusicSelected,
       creatorId: user?.id,
     });
+
+    router.push(
+      `/${user.id}/${personName}/Landing`
+    );
 
   }
 

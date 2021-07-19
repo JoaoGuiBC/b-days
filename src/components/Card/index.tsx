@@ -9,6 +9,7 @@ interface CardProps {
   image: string;
   altText: string;
   isIcon: boolean;
+  link?: string;
   initialDelay: number;
   toggleModal?: (personName: string) => void;
 }
@@ -18,6 +19,7 @@ export const Card: React.FC<CardProps> = ({
   image,
   altText,
   isIcon,
+  link,
   initialDelay,
   toggleModal,
 }) => {
@@ -42,7 +44,7 @@ export const Card: React.FC<CardProps> = ({
       <p>{title}</p>
 
       {isIcon ? (
-        <Link href={`/${title}`}>
+        <Link href={link}>
           <a>
             <motion.img src={image} alt={altText} layoutId={title} />
           </a>

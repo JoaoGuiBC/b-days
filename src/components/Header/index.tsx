@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 import { Container, Title, ButtonsContainer } from "./styles";
@@ -9,6 +10,10 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ title }) => {
+  const router = useRouter();
+
+  const { creator, personName } = router.query;
+
   const images = [
     { name: 'Textos', image: '/pencilIcon.png' },
     { name: 'Desenhos', image: '/paintIcon.png' },
@@ -17,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
 
   return (
     <Container>
-      <Link href="/Landing">
+      <Link href={`/${creator}/${personName}/Landing`}>
         <a>
           <Image src="/svg/arrow.svg" height={32} width={32} />
         </a>

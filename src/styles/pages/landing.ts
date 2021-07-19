@@ -78,7 +78,7 @@ export const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   padding: 7rem 0;
 
@@ -86,14 +86,17 @@ export const MenuContainer = styled.div`
 
   span {
     font-size: 1.25rem;
+    margin-bottom: 4rem;
   }
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
+  margin-bottom: 4rem;
+  gap: 2rem;
   
   width: 20rem;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const MusicButton = styled(motion.div)`

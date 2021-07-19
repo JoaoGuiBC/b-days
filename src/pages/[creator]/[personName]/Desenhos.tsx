@@ -2,7 +2,7 @@ import { useViewportScroll } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
-import { Header } from "../components/Header";
+import { Header } from "../../../components/Header";
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
   Background,
   ArtistInfo,
   Footer,
-} from '../styles/pages/desenhos';
+} from '../../../styles/pages/desenhos';
 
 const drawings = [{ id: 1, author: 'Pessoa 1', src: '/placeholderImage.png' }, { id: 2, author: 'Pessoa 2', src: '/placeholderImage2.png' }, { id: 3, author: 'Pessoa 3', src: '/placeholderImage.png' }, { id: 4, author: 'Pessoa 4', src: '/placeholderImage2.png' }, { id: 5, author: 'Pessoa 5', src: '/placeholderImage.png' }, { id: 6, author: 'Pessoa 6', src: '/placeholderImage2.png' }, { id: 7, author: 'Pessoa 7', src: '/placeholderImage.png' }, { id: 8, author: 'Pessoa 8', src: '/placeholderImage2.png' }];
 
