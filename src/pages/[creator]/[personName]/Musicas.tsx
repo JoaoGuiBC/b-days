@@ -1,8 +1,14 @@
+import Head from "next/head";
 import { Header } from "../../../components/Header";
 
 const Musicas: React.FC = () => {
   return (
-    <Header title="Musicas" />
+    <>
+      <Head>
+        <title>B-Days - Músicas</title>
+      </Head>
+      <Header title="Musicas" />
+    </>
   );
 }
 

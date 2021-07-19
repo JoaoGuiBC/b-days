@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useCallback, useState } from "react";
 
 import { Card } from "../../../components/Card";
@@ -23,6 +24,9 @@ const Textos: React.FC = () => {
 
   return (
     <>
+      <Head>
+        <title>B-Days - Textos</title>
+      </Head>
       <Modal
         isVisible={isVisible}
         setIsVisible={() => setIsVisible(false)}

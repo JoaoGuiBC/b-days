@@ -1,4 +1,5 @@
 import { useViewportScroll } from "framer-motion";
+import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -39,6 +40,9 @@ const Desenhos: React.FC = () => {
 
   return (
     <>
+      <Head>
+        <title>B-Days - Desenhos</title>
+      </Head>
       <Header title="Desenhos" />
       <Container>
         <Text>

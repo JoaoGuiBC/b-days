@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { AnimateSharedLayout } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
 
@@ -12,6 +13,9 @@ function MyApp({ Component, pageProps }) {
       <AuthContextProvider>
         <ThemeProvider theme={Theme}>
           <AnimateSharedLayout>
+            <Head>
+              <title>B-Days</title>
+            </Head>
             <GlobalStyle />
             <Component {...pageProps} />
           </AnimateSharedLayout>
