@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -23,4 +24,29 @@ export const CardsContainer = styled.div`
 
   justify-content: center;
   gap: 5rem 2.5rem;
+`;
+
+export const AddTextButton = styled(motion.button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 3rem;
+  height: 3rem;
+
+  border-radius: 10px;
+  border: none;
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.secondary};
+
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+
+  cursor: pointer;
+
+  svg {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 `;

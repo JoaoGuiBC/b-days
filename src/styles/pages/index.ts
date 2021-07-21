@@ -56,14 +56,11 @@ export const NewPageButton = styled.button<NewPageButtonProps>`
 
   transition: color 0.4s, background 0.4s;
 
-  img {
-    margin-right: 0.5rem;
-    height: 1.25rem;
-  }
-
   svg {
-    height: 1.25rem;
-    stroke: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.secondary};
+    height: 2rem;
+    width: 2rem;
+    transition: color 0.4s;
   }
 
   &:hover {
@@ -74,7 +71,7 @@ export const NewPageButton = styled.button<NewPageButtonProps>`
     color: ${({ theme }) => theme.colors.primary};
 
     svg {
-      stroke: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.primary};
     }
   }
 `;

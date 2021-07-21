@@ -3,6 +3,7 @@ import { Container, Title, Content, NewPageButton, Separator, Button } from "../
 
 import { useAuth } from "../hooks/useAuth";
 import { NewPageModal } from "../components/NewPageModal";
+import { FiPlus } from "react-icons/fi";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,13 +35,7 @@ export default function Home() {
           <NewPageButton onClick={handleCreateNewPage} isLoggedIn={user ? true : false}>
             {user ? (
               <>
-                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="17.5" y1="32.5" x2="17.5" y2="1.5" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="1.5" y1="17.5" x2="32.5" y2="17.5" strokeWidth="2" strokeLinecap="round" />
-                  <clipPath id="clip0">
-                    <rect width="33" height="33" fill="white" transform="translate(0.5 0.5)" />
-                  </clipPath>
-                </svg>
+                <FiPlus />
                 Crie sua página
               </>
             ) : (

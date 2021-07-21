@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 interface CardProps {
-  isIcon: boolean
+  isIcon: boolean;
+  src: string;
 }
 
 export const Container = styled(motion.div) <CardProps>`
@@ -35,6 +36,19 @@ export const Container = styled(motion.div) <CardProps>`
     width: 100%;
     display:block;
     border-radius: 0 0 10px 10px;
+    
+    ${({ isIcon }) => isIcon ? 'padding: 16px' : ''}
+    ${({ isIcon }) => !isIcon ? 'cursor: pointer' : ''};
+  }
+
+  div {
+    flex: 1;
+    display:block;
+    border-radius: 0 0 10px 10px;
+
+    background-image: url(${({ src }) => src});
+    background-repeat: no-repeat;
+    background-size: cover;
     
     ${({ isIcon }) => isIcon ? 'padding: 16px' : ''}
     ${({ isIcon }) => !isIcon ? 'cursor: pointer' : ''};

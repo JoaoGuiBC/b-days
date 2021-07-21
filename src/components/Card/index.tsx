@@ -33,6 +33,7 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <Container
+      src={image}
       isIcon={isIcon}
       initial={{ opacity: 0, y: -15, boxShadow: "1px 20px 4px rgba(0, 0, 0, 0.1)" }}
       animate={{ opacity: 1, y: 0, boxShadow: '1px 4px 4px rgba(0, 0, 0, 0.4)', }}
@@ -50,7 +51,7 @@ export const Card: React.FC<CardProps> = ({
           </a>
         </Link>
       ) : (
-        <img src={image} alt={altText} onClick={() => toggleModal(title)} />
+        <div onClick={() => toggleModal(title)} />
       )}
     </Container>
   );

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { FiX } from "react-icons/fi";
 
 import { Container, Background, Content } from './styles';
-import { SelectedPersonProps } from "../../pages/Textos";
+import { SelectedPersonProps } from "../../pages/[creator]/[personName]/Textos";
 
 interface ModalProps {
   isVisible: boolean;
@@ -39,10 +39,10 @@ export const Modal: React.FC<ModalProps> = ({ isVisible, setIsVisible, person })
             exit={{ scale: 0 }}
           >
             <button type="button" onClick={setIsVisible}>
-              <Image src="/svg/close.svg" height={24} width={24} />
+              <FiX size="1.5rem" />
             </button>
             <strong>{person.name}</strong>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia molestie neque id viverra. Curabitur facilisis lorem in egestas pretium. In non mattis tortor, a blandit libero. Ut sapien massa, laoreet vitae velit at, mollis porttitor tellus. Praesent tortor dui, lobortis ac risus sed, elementum interdum lorem.</p>
+            <p>{person.text}</p>
           </Content>
         </Container>
       )}
