@@ -10,7 +10,9 @@ import { Modal as TextModal } from "../../../components/TextsModal";
 import { Modal as AddNewTextModal } from "../../../components/AddTextModal";
 
 import { Container, Text, CardsContainer, AddTextButton } from '../../../styles/pages/textos';
+
 import { database, storage } from "../../../services/firebase";
+import { useAuth } from "../../../hooks/useAuth";
 
 export interface SelectedPersonProps {
   name: string;
@@ -27,17 +29,27 @@ type Person = [
   }
 ]
 
-interface AuthorProps {
+interface TextosProps {
   AuthorTexts: [[string, {
     text: string,
   }]];
+
+  selectedPages: {
+    drawsPage: boolean;
+    musicsPage: boolean;
+    textsPage: boolean;
+  };
 }
 
-const Textos: React.FC<AuthorProps> = ({ AuthorTexts }) => {
+const Textos: React.FC<TextosProps> = ({ AuthorTexts, selectedPages }) => {
   const [isTextModalVisible, setIsTextModalVisible] = useState(false);
   const [isAddNewTextModalVisible, setIsAddNewTextModalVisible] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState<SelectedPersonProps>({} as SelectedPersonProps);
   const [person, setPerson] = useState<Person[]>([]);
+
+  const router = useRouter();
+  const { user } = useAuth();
+  const { creator, personName } = router.query;
 
   const handleToggleModal = (personName: string) => {
     const text = AuthorTexts.find(content => content[0] === personName);
@@ -46,12 +58,8 @@ const Textos: React.FC<AuthorProps> = ({ AuthorTexts }) => {
     setIsTextModalVisible(true);
   };
 
-  const router = useRouter();
-
   useEffect(() => {
-    const { creator, personName } = router.query;
-
-    const parsedContent = AuthorTexts.map(text => {
+    AuthorTexts.map(text => {
       const imageRef = storage.ref(`${creator}/pages/${personName}/${text[0]}/userImage.jpg`);
 
       imageRef.getDownloadURL().then(function (url) {
@@ -90,7 +98,7 @@ const Textos: React.FC<AuthorProps> = ({ AuthorTexts }) => {
         person={selectedPerson}
       />
 
-      <Header title="Textos" />
+      <Header title="Textos" selectedPages={selectedPages} />
 
       <Container>
         <Text>
@@ -112,15 +120,17 @@ const Textos: React.FC<AuthorProps> = ({ AuthorTexts }) => {
 
         </CardsContainer>
 
-        <AddTextButton
-          initial={{ opacity: 0, y: -15, boxShadow: "1px 20px 4px rgba(0, 0, 0, 0.1)" }}
-          animate={{ opacity: 1, y: 0, boxShadow: '1px 4px 4px rgba(0, 0, 0, 0.4)', }}
-          whileHover={{ scale: 1.05, y: -9, boxShadow: "0px 10px 4px rgba(0, 0, 0, 0.2)" }}
-          whileTap={{ scale: 0.75, y: 0, boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.4)" }}
-          onClick={() => setIsAddNewTextModalVisible(true)}
-        >
-          <FiPlus />
-        </AddTextButton>
+        {user?.id === creator && (
+          <AddTextButton
+            initial={{ opacity: 0, y: -15, boxShadow: "1px 20px 4px rgba(0, 0, 0, 0.1)" }}
+            animate={{ opacity: 1, y: 0, boxShadow: '1px 4px 4px rgba(0, 0, 0, 0.4)', }}
+            whileHover={{ scale: 1.05, y: -9, boxShadow: "0px 10px 4px rgba(0, 0, 0, 0.2)" }}
+            whileTap={{ scale: 0.75, y: 0, boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.4)" }}
+            onClick={() => setIsAddNewTextModalVisible(true)}
+          >
+            <FiPlus />
+          </AddTextButton>
+        )}
       </Container>
     </>
   );
@@ -132,15 +142,24 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { creator, personName } = params;
 
   const pageRef = database.ref(`/${creator}/pages/${personName}`);
-  const selectedPages = await pageRef.once('value').then(page => {
-    return page.val().texts
+  const texts = await pageRef.once('value').then(page => {
+    return !!page.val().texts ? page.val().texts : ''
   });
 
-  const AuthorTexts = Object.entries(selectedPages);
+  const AuthorTexts = Object.entries(texts);
+
+  const selectedPages = await pageRef.once('value').then(page => {
+    return {
+      drawsPage: page.val().drawsPage,
+      musicsPage: page.val().musicsPage,
+      textsPage: page.val().textsPage,
+    }
+  });
 
   return {
     props: {
       AuthorTexts,
+      selectedPages,
     }
   }
 }

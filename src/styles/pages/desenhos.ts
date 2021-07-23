@@ -90,7 +90,7 @@ export const ArtistInfo = styled(motion.div)`
     }
   }
 
-  a img {
+  a svg {
     height: 1rem;
     margin-left: 4px;
   }

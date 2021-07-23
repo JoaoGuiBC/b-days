@@ -24,10 +24,12 @@ interface LandingProps {
     drawsPage: boolean;
     musicsPage: boolean;
     textsPage: boolean;
-  }
+  };
+
+  contributors: string[];
 }
 
-const Landing: React.FC<LandingProps> = ({ selectedPages }) => {
+const Landing: React.FC<LandingProps> = ({ selectedPages, contributors }) => {
   const [animationDelay, setAnimationDelay] = useState(0.2);
   const [animationDuration, setAnimationDuration] = useState(0.75);
 
@@ -47,7 +49,7 @@ const Landing: React.FC<LandingProps> = ({ selectedPages }) => {
         <Texts>
           <h1>-HAPPY {String(personName).toUpperCase()} B-DAY-</h1>
           <strong>Feito com carinho por:</strong>
-          <p>Pessoa 1, Pessoa 2, Pessoa 3, Pessoa 4, Pessoa 5, Pessoa 6, Pessoa 7, Pessoa 8, Pessoa 9, Pessoa 10</p>
+          <p>{!!contributors ? contributors.join(', ') : ''}</p>
         </Texts>
       </WelcomeContainer>
 
@@ -119,6 +121,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { creator, personName } = params;
 
   const pageRef = database.ref(`/${creator}/pages/${personName}`);
+
+  const contributors = await pageRef.once('value').then(page => {
+    return !!page.val().texts ? Object.keys(page.val().texts) : '';
+  });
+
   const selectedPages = await pageRef.once('value').then(page => {
     return {
       drawsPage: page.val().drawsPage,
@@ -129,7 +136,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      selectedPages
+      selectedPages,
+      contributors,
     }
   }
 }

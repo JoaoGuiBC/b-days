@@ -64,7 +64,7 @@ export const Texts = styled.div`
   }
 
   p {
-    max-width: 20rem;
+    max-width: 25rem;
     font-size: 1.25rem;
     text-align: center;
     letter-spacing: 0.25rem;

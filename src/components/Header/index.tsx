@@ -7,17 +7,23 @@ import { Container, Title, ButtonsContainer } from "./styles";
 
 interface HeaderProps {
   title: string;
+
+  selectedPages: {
+    drawsPage: boolean;
+    musicsPage: boolean;
+    textsPage: boolean;
+  };
 }
 
-export const Header: React.FC<HeaderProps> = ({ title }) => {
+export const Header: React.FC<HeaderProps> = ({ title, selectedPages }) => {
   const router = useRouter();
 
   const { creator, personName } = router.query;
 
   const images = [
-    { name: 'Textos', image: '/pencilIcon.png' },
-    { name: 'Desenhos', image: '/paintIcon.png' },
-    { name: 'Musicas', image: '/spotifyLogoIcon.png' },
+    { name: 'Textos', image: '/pencilIcon.png', show: selectedPages.textsPage },
+    { name: 'Desenhos', image: '/paintIcon.png', show: selectedPages.drawsPage },
+    { name: 'Musicas', image: '/spotifyLogoIcon.png', show: selectedPages.musicsPage },
   ]
 
   return (
@@ -41,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
       <ButtonsContainer>
 
         {images.map(image => {
-          if (image.name !== title)
+          if (image.name !== title && image.show)
             return (
               <Link href={image.name} key={image.name}>
                 <a>
