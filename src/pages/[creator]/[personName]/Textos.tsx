@@ -42,7 +42,7 @@ const Textos: React.FC<TextosProps> = ({ authorTexts, selectedPages }) => {
 
   const router = useRouter();
   const { user } = useAuth();
-  const { creator, personName } = router.query;
+  const { creator } = router.query;
 
   const handleToggleModal = (name: string, text: string) => {
     setSelectedPerson({ name, text });

@@ -82,7 +82,7 @@ const Landing: React.FC<LandingProps> = ({ selectedPages, contributors }) => {
         </ButtonsContainer>
 
         {selectedPages.musicsPage && (
-          <Link href={`/${creator}/${personName}/Textos`}>
+          <Link href={`/${creator}/${personName}/Musicas`}>
             <a>
               <MusicButton
                 initial={{ opacity: 0, y: -15, boxShadow: "1px 20px 4px rgba(0, 0, 0, 0.1)" }}
