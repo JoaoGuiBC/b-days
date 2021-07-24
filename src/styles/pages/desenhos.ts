@@ -24,6 +24,7 @@ export const Text = styled.p`
 
 export const Images = styled.div`
   width: 100%;
+  height: 100vh;
 
   & + & > div:first-child {
     filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7));
