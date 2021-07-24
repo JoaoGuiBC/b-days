@@ -32,8 +32,8 @@ export const Content = styled(motion.div)`
   z-index: 4;
 
   width: 48rem;
-  height: 25rem;
-  padding: 2.5rem 4rem 1rem;
+  max-height: 33rem;
+  padding: 2.5rem 4rem;
 
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
@@ -49,6 +49,7 @@ export const Content = styled(motion.div)`
     text-align: justify;
     font-size: 1.10rem;
     overflow: auto;
+    padding: 0 .5rem;
   }
 
   button {

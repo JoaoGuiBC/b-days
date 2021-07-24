@@ -49,12 +49,15 @@ export const Modal: React.FC<ModalProps> = ({ isVisible, setIsVisible }) => {
     const pageRef = database.ref(`${user.id}/pages/${personName}/texts/${authorName}`);
     const imageRef = storage.ref(`${user.id}/pages/${personName}/${authorName}/userImage.jpg`);
 
-    await pageRef.set({
-      text,
-    });
-
     const image = inputRef.current.files[0];
     await imageRef.put(image);
+
+    imageRef.getDownloadURL().then(function (url) {
+      pageRef.set({
+        text,
+        url,
+      });
+    });
 
     setAuthorName('');
     setText('');

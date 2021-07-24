@@ -1,7 +1,7 @@
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FiPlus } from 'react-icons/fi';
 
 import { Card } from "../../../components/Card";
@@ -11,7 +11,7 @@ import { Modal as AddNewTextModal } from "../../../components/AddTextModal";
 
 import { Container, Text, CardsContainer, AddTextButton } from '../../../styles/pages/textos';
 
-import { database, storage } from "../../../services/firebase";
+import { database } from "../../../services/firebase";
 import { useAuth } from "../../../hooks/useAuth";
 
 export interface SelectedPersonProps {
@@ -19,20 +19,14 @@ export interface SelectedPersonProps {
   text: string;
 }
 
-type Person = [
-  string,
-  {
-    text: string,
-  },
-  {
-    image: string,
-  }
-]
-
 interface TextosProps {
-  authorTexts: [[string, {
-    text: string,
-  }]];
+  authorTexts: [[
+    string,
+    {
+      text: string,
+      url: string,
+    }
+  ]];
 
   selectedPages: {
     drawsPage: boolean;
@@ -45,41 +39,15 @@ const Textos: React.FC<TextosProps> = ({ authorTexts, selectedPages }) => {
   const [isTextModalVisible, setIsTextModalVisible] = useState(false);
   const [isAddNewTextModalVisible, setIsAddNewTextModalVisible] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState<SelectedPersonProps>({} as SelectedPersonProps);
-  const [person, setPerson] = useState<Person[]>([]);
 
   const router = useRouter();
   const { user } = useAuth();
   const { creator, personName } = router.query;
 
-  const handleToggleModal = (personName: string) => {
-    const text = authorTexts.find(content => content[0] === personName);
-
-    setSelectedPerson({ name: personName, text: text[1].text });
+  const handleToggleModal = (name: string, text: string) => {
+    setSelectedPerson({ name, text });
     setIsTextModalVisible(true);
   };
-
-  useEffect(() => {
-    authorTexts.map(text => {
-      const imageRef = storage.ref(`${creator}/pages/${personName}/${text[0]}/userImage.jpg`);
-
-      imageRef.getDownloadURL().then(function (url) {
-        setPerson(
-          oldState => [...oldState, [text[0], { text: text[1].text }, { image: url }]]
-        );
-      }).catch(function (error) {
-
-        switch (error.code) {
-          case 'storage/object-not-found':
-            console.log('storage/object-not-found');
-            break;
-
-          case 'storage/unauthorized':
-            console.log('storage/unauthorized');
-            break;
-        }
-      });
-    });
-  }, []);
 
   return (
     <>
@@ -106,15 +74,15 @@ const Textos: React.FC<TextosProps> = ({ authorTexts, selectedPages }) => {
         </Text>
         <CardsContainer>
 
-          {person.map((person, index) => (
+          {authorTexts.map((person, index) => (
             <Card
-              key={person[0]}
+              key={index}
               title={person[0]}
               altText={person[0]}
-              image={person[2].image}
+              image={person[1].url}
               isIcon={false}
               initialDelay={((index - 1) / 10)}
-              toggleModal={handleToggleModal}
+              toggleModal={() => handleToggleModal(person[0], person[1].text)}
             />
           ))}
 
@@ -138,7 +106,14 @@ const Textos: React.FC<TextosProps> = ({ authorTexts, selectedPages }) => {
 
 export default Textos;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async ({}) => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { creator, personName } = params;
 
   const pageRef = database.ref(`/${creator}/pages/${personName}`);

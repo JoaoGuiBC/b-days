@@ -1,11 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 import { Card } from '../../../components/Card';
 
-import { useAuth } from '../../../hooks/useAuth';
 import { database } from '../../../services/firebase';
 
 import {
