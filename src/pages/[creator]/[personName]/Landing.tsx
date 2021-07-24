@@ -126,7 +126,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const textContributors = !!page.val().texts ? Object.keys(page.val().texts) : [''];
     const drawContributors = !!page.val().draws ? Object.keys(page.val().draws) : [''];
 
-    return [...textContributors, ...drawContributors];
+    return [...textContributors, ...drawContributors.filter(contributor => {
+      if (!textContributors.includes(contributor)) {
+        return contributor
+      }
+    })];
   });
 
   const selectedPages = await pageRef.once('value').then(page => {
