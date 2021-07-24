@@ -30,7 +30,7 @@ type Person = [
 ]
 
 interface TextosProps {
-  AuthorTexts: [[string, {
+  authorTexts: [[string, {
     text: string,
   }]];
 
@@ -41,7 +41,7 @@ interface TextosProps {
   };
 }
 
-const Textos: React.FC<TextosProps> = ({ AuthorTexts, selectedPages }) => {
+const Textos: React.FC<TextosProps> = ({ authorTexts, selectedPages }) => {
   const [isTextModalVisible, setIsTextModalVisible] = useState(false);
   const [isAddNewTextModalVisible, setIsAddNewTextModalVisible] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState<SelectedPersonProps>({} as SelectedPersonProps);
@@ -52,14 +52,14 @@ const Textos: React.FC<TextosProps> = ({ AuthorTexts, selectedPages }) => {
   const { creator, personName } = router.query;
 
   const handleToggleModal = (personName: string) => {
-    const text = AuthorTexts.find(content => content[0] === personName);
+    const text = authorTexts.find(content => content[0] === personName);
 
     setSelectedPerson({ name: personName, text: text[1].text });
     setIsTextModalVisible(true);
   };
 
   useEffect(() => {
-    AuthorTexts.map(text => {
+    authorTexts.map(text => {
       const imageRef = storage.ref(`${creator}/pages/${personName}/${text[0]}/userImage.jpg`);
 
       imageRef.getDownloadURL().then(function (url) {
@@ -146,7 +146,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     return !!page.val().texts ? page.val().texts : ''
   });
 
-  const AuthorTexts = Object.entries(texts);
+  const authorTexts = Object.entries(texts);
 
   const selectedPages = await pageRef.once('value').then(page => {
     return {
@@ -158,7 +158,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   return {
     props: {
-      AuthorTexts,
+      authorTexts,
       selectedPages,
     }
   }

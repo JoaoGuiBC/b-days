@@ -123,7 +123,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageRef = database.ref(`/${creator}/pages/${personName}`);
 
   const contributors = await pageRef.once('value').then(page => {
-    return !!page.val().texts ? Object.keys(page.val().texts) : '';
+    const textContributors = !!page.val().texts ? Object.keys(page.val().texts) : [''];
+    const drawContributors = !!page.val().draws ? Object.keys(page.val().draws) : [''];
+
+    return [...textContributors, ...drawContributors];
   });
 
   const selectedPages = await pageRef.once('value').then(page => {
