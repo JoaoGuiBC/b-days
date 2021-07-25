@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return link.val();
   });
 
-  const musicsLinks: string[] = Object.values(musics);
+  const musicsLinks: string[] = musics ? Object.values(musics) : [];
 
   return {
     props: {

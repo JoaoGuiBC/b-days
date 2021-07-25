@@ -124,10 +124,6 @@ const Desenhos: React.FC<DesenhosProps> = ({ authorDraws, selectedPages }) => {
               >
                 <span>Feito por:</span>
                 <strong>{draw[0]}</strong>
-                <a href={draw[1]} download={`${draw[0]}.png`}>
-                  Download
-                  <FiDownload size="1rem" />
-                </a>
               </ArtistInfo>
             </Background>
           </Images>
