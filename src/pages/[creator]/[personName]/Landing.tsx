@@ -25,10 +25,12 @@ interface LandingProps {
     textsPage: boolean;
   };
 
+  photo: string;
+
   contributors: string[];
 }
 
-const Landing: React.FC<LandingProps> = ({ selectedPages, contributors }) => {
+const Landing: React.FC<LandingProps> = ({ selectedPages, photo, contributors }) => {
   const [animationDelay, setAnimationDelay] = useState(0.2);
   const [animationDuration, setAnimationDuration] = useState(0.75);
 
@@ -44,7 +46,7 @@ const Landing: React.FC<LandingProps> = ({ selectedPages, contributors }) => {
   return (
     <Container>
       <WelcomeContainer>
-        <BackgroundImg />
+        <BackgroundImg src={photo} />
         <Texts>
           <h1>-HAPPY {String(personName).toUpperCase()} B-DAY-</h1>
           <strong>Feito com carinho por:</strong>
@@ -132,6 +134,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })];
   });
 
+  const photo = await pageRef.once('value').then(page => page.val().personPhoto);
+
   const selectedPages = await pageRef.once('value').then(page => {
     return {
       drawsPage: page.val().drawsPage,
@@ -143,6 +147,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       selectedPages,
+      photo,
       contributors,
     }
   }

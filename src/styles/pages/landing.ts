@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import img from '../../../public/personPhoto.png';
+interface BackgroundImgProps {
+  src: string;
+}
 
 export const Container = styled.div`
   width: 100vw;
@@ -21,7 +23,7 @@ export const WelcomeContainer = styled.div`
   z-index: 1;
 `;
 
-export const BackgroundImg = styled.div`
+export const BackgroundImg = styled.div<BackgroundImgProps>`
   position: absolute;
 
   left: 0;
@@ -29,12 +31,12 @@ export const BackgroundImg = styled.div`
   top: 0;
   bottom: 0;
 
-  background-image: url(${img});
+  background-image: url(${({ src }) => src});
 
   background-position: cover;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(4px);
+  filter: blur(8px);
 
   border-radius: 0 10px 10px 0;
 `;
