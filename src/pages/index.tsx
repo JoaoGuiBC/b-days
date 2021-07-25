@@ -10,6 +10,8 @@ export default function Home() {
 
   const { user, signInWithGoogle } = useAuth();
 
+  console.log(process.env.NEXT_PUBLIC_APP_ID);
+
   async function handleCreateNewPage() {
     if (!user) {
       return signInWithGoogle();
