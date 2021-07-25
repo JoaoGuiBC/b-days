@@ -14,6 +14,8 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
+console.log(process.env.NEXT_PUBLIC_API_KEY)
+
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 } else {
