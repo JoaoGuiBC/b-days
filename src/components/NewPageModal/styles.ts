@@ -54,7 +54,6 @@ export const Form = styled.div`
 export const Input = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 4rem;
 
   span {
     font-size: 0.75rem;
@@ -70,6 +69,32 @@ export const Input = styled.div`
     border-radius: 5px;
 
     padding: 0 0.5rem;
+  }
+`;
+
+export const ImageInput = styled.div`
+    margin: 1rem 0 3rem;
+    align-self: center;
+
+  label {
+    background: ${({ theme }) => theme.colors.secondary};
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+
+    color: ${({ theme }) => theme.colors.lightText};
+
+    cursor: pointer;
+
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  input {
+    display: none;
+    opacity: 0;
   }
 `;
 

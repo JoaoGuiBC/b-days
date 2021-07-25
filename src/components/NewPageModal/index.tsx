@@ -1,10 +1,10 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router'
 import { AnimatePresence } from 'framer-motion';
 
 
 import { useAuth } from '../../hooks/useAuth';
-import { database } from '../../services/firebase';
+import { database, storage } from '../../services/firebase';
 
 import {
   Container,
@@ -13,6 +13,7 @@ import {
   Title,
   Form,
   Input,
+  ImageInput,
   ContentSelector,
   Button,
 } from './styles';
@@ -27,6 +28,8 @@ export const NewPageModal: React.FC<NewPageModal> = ({ isVisible, setIsVisible }
   const [isTextSelected, setIsTextSelected] = useState(false);
   const [isDrawSelected, setIsDrawSelected] = useState(false);
   const [isMusicSelected, setIsMusicSelected] = useState(false);
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { user } = useAuth();
   const router = useRouter();
@@ -44,7 +47,7 @@ export const NewPageModal: React.FC<NewPageModal> = ({ isVisible, setIsVisible }
   async function handleCreateNewPage(event: FormEvent) {
     event.preventDefault();
 
-    if (personName.trim() === '') {
+    if (personName.trim() === '' || !inputRef.current.files[0]) {
       return;
     }
 
@@ -53,13 +56,20 @@ export const NewPageModal: React.FC<NewPageModal> = ({ isVisible, setIsVisible }
     }
 
     const pageRef = database.ref(`${user.id}/pages/${personName}`);
+    const imageRef = storage.ref(`${user.id}/pages/${personName}/photo.jpg`);
 
-    await pageRef.set({
-      personName,
-      textsPage: isTextSelected,
-      drawsPage: isDrawSelected,
-      musicsPage: isMusicSelected,
-      creatorId: user?.id,
+    const image = inputRef.current.files[0];
+    await imageRef.put(image);
+
+    imageRef.getDownloadURL().then(async (url) => {
+      await pageRef.set({
+        personName,
+        personPhoto: url,
+        textsPage: isTextSelected,
+        drawsPage: isDrawSelected,
+        musicsPage: isMusicSelected,
+        creatorId: user?.id,
+      });
     });
 
     router.push(
@@ -95,6 +105,15 @@ export const NewPageModal: React.FC<NewPageModal> = ({ isVisible, setIsVisible }
                   onChange={(e) => setPersonName(e.target.value)}
                 />
               </Input>
+
+              <ImageInput>
+                <label htmlFor="fileInput">Escolher foto da pessoa</label>
+                <input
+                  type="file"
+                  ref={inputRef}
+                  id="fileInput"
+                />
+              </ImageInput>
 
               <ContentSelector>
                 <span>Selecione quais conteudos irão ter</span>
