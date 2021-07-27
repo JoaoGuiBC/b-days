@@ -183,6 +183,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       authorDraws,
       selectedPages,
-    }
+    },
+    revalidate: 60 * 60 //1 hour
   }
 }

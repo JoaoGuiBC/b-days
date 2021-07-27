@@ -149,6 +149,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       selectedPages,
       photo,
       contributors,
-    }
+    },
+    revalidate: 60 //1 minute
   }
 }

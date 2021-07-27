@@ -135,6 +135,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       authorTexts,
       selectedPages,
-    }
+    },
+    revalidate: 60 //1 minute
   }
 }

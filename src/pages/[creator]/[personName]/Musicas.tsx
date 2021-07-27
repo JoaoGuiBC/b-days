@@ -39,8 +39,13 @@ const Musicas: React.FC<MusicasProps> = ({ musicsLinks, selectedPages }) => {
       </Head>
       <Header title="Musicas" selectedPages={selectedPages} />
       <Content>
-        {musicsLinks.map(link => (
-          <iframe allowTransparency src={`https://open.spotify.com/embed/playlist/${link}`} allow="encrypted-media" />
+        {musicsLinks.map((link, index) => (
+          <iframe
+            key={index}
+            allowTransparency
+            src={`https://open.spotify.com/embed/playlist/${link}`}
+            allow="encrypted-media"
+          />
         ))}
       </Content>
 
@@ -92,6 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       musicsLinks,
       selectedPages,
-    }
+    },
+    revalidate: 60 * 60 //1 hour
   }
 }

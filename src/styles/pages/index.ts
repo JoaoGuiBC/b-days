@@ -120,7 +120,8 @@ export const Button = styled(motion.button)`
 
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.lightText};
-  cursor: pointer;
+  cursor: not-allowed;
+  filter: opacity(0.7);
 
   font-weight: 700;
 `;
